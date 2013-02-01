@@ -7,5 +7,14 @@
     <string name="title_section1">Take a mark</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    
+    <string name="login_label_1">GestNote Beta</string>
+    <string name="login_label_2">Connexion</string>
+    <string name="login_label_3">www.gestnotebeta.com</string>
+    <string name="login_username">Enter your username</string>
+    <string name="login_password">Enter your password</string>
+    <string name="login_sign_in">Sign in</string>
+    <string name="login_sign_up">Sign up</string>
+    
 
 </resources>
