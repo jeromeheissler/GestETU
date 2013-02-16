@@ -157,36 +157,39 @@ ActionBar.TabListener {
 		           security.add(createItem("Titre 3", "sous titre du titre 3 un peu lon pour avoir un retour à la ligne"));
 				 */  
 
-				List<Map<String,?>> security = new LinkedList<Map<String,?>>();  
-				security.add(createItem("DI", "")); 
-				security.add(createItem("DA", ""));  
-				security.add(createItem("DP", ""));			            
+				List<Map<String,?>> promotionData = new LinkedList<Map<String,?>>();  
+				promotionData.add(createItem("DI", "")); 
+				promotionData.add(createItem("DA", ""));  
+				promotionData.add(createItem("DP", ""));			            
 
 				// creation de nom objet de type ListSeparer 
 				ListSeparer adapter = new ListSeparer(this.getActivity().getBaseContext());  
 
 				//ajout d'un autre adapter avec entete plux complex et des items sur deux lignes
-				adapter.addSection("2015", new SimpleAdapter(this.getActivity().getBaseContext(), security, R.layout.promotion_list_item,  
+				adapter.addSection("2015", new SimpleAdapter(this.getActivity().getBaseContext(), promotionData, R.layout.promotion_list_item,  
 						new String[] { ITEM_TITLE, ITEM_CAPTION }, new int[] { R.id.textView1, R.id.textView2 }));  
 
 				//ajout d'un autre adapter avec entete plux complex et des items sur deux lignes
-				adapter.addSection("2014", new SimpleAdapter(this.getActivity().getBaseContext(), security, R.layout.promotion_list_item,  
+				adapter.addSection("2014", new SimpleAdapter(this.getActivity().getBaseContext(), promotionData, R.layout.promotion_list_item,  
 						new String[] { ITEM_TITLE, ITEM_CAPTION }, new int[] { R.id.textView1, R.id.textView2 }));  
 
 				//ajout d'un autre adapter avec entete plux complex et des items sur deux lignes
-				adapter.addSection("2013", new SimpleAdapter(this.getActivity().getBaseContext(), security, R.layout.promotion_list_item,  
+				adapter.addSection("2013", new SimpleAdapter(this.getActivity().getBaseContext(), promotionData, R.layout.promotion_list_item,  
 						new String[] { ITEM_TITLE, ITEM_CAPTION }, new int[] { R.id.textView1, R.id.textView2 }));  
 
 				//ajout d'un autre adapter avec entete plux complex et des items sur deux lignes
-				adapter.addSection("2012", new SimpleAdapter(this.getActivity().getBaseContext(), security, R.layout.promotion_list_item,  
+				adapter.addSection("2012", new SimpleAdapter(this.getActivity().getBaseContext(), promotionData, R.layout.promotion_list_item,  
 						new String[] { ITEM_TITLE, ITEM_CAPTION }, new int[] { R.id.textView1, R.id.textView2 }));  
 
 				lvListe.setAdapter(adapter);
 
 				lvListe.setOnItemClickListener(new OnItemClickListener() {
 					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-						Toast toast = Toast.makeText(view.getContext(), "test", Toast.LENGTH_SHORT);
+		
+						Toast toast = Toast.makeText(view.getContext(), "position in list : " + position
+													+ " item : " + parent.getAdapter().getItem(position)
+													+ " nb item in list : " + parent.getAdapter().getCount()
+													, Toast.LENGTH_SHORT);
 						toast.show();
 						Log.e("onItemClick ", "onItemClick ");
 					}
@@ -198,7 +201,54 @@ ActionBar.TabListener {
 				ViewGroup rootView = (ViewGroup) inflater.inflate(
 						R.layout.menu, container, false);
 
-				lvListe = (ListView) rootView.findViewById(R.id.listView);
+				lvListe =  (ListView) rootView.findViewById(R.id.listView);
+
+				/* List<Map<String,?>> security = new LinkedList<Map<String,?>>();  
+		           security.add((createItem("titre 1 ", "sous titre du titre1"));  
+		           security.add(createItem("titre 2", "Sous titre du titre 2"));  
+		           security.add(createItem("Titre 3", "sous titre du titre 3 un peu lon pour avoir un retour à la ligne"));
+				 */  
+
+				List<Map<String,?>> AData = new LinkedList<Map<String,?>>();  
+				AData.add(createItem("Almeras Antoine", "21004735")); 
+				
+				List<Map<String,?>> HData = new LinkedList<Map<String,?>>();  
+				HData.add(createItem("Heissler Jérôme", "21004735"));  
+				HData.add(createItem("Havard Thibaud", "XXXXXXXX"));	
+				
+				List<Map<String,?>> NData = new LinkedList<Map<String,?>>();  
+				NData.add(createItem("Rosado Nicolas", "21004735"));
+				
+
+				// creation de nom objet de type ListSeparer 
+				ListSeparer adapter = new ListSeparer(this.getActivity().getBaseContext());  
+
+				//ajout d'un autre adapter avec entete plux complex et des items sur deux lignes
+				adapter.addSection("A", new SimpleAdapter(this.getActivity().getBaseContext(), AData, R.layout.student_list_item,  
+						new String[] { ITEM_TITLE, ITEM_CAPTION }, new int[] { R.id.textView1, R.id.textView2 }));  
+
+				//ajout d'un autre adapter avec entete plux complex et des items sur deux lignes
+				adapter.addSection("H", new SimpleAdapter(this.getActivity().getBaseContext(), HData, R.layout.student_list_item,  
+						new String[] { ITEM_TITLE, ITEM_CAPTION }, new int[] { R.id.textView1, R.id.textView2 }));  
+
+				//ajout d'un autre adapter avec entete plux complex et des items sur deux lignes
+				adapter.addSection("R", new SimpleAdapter(this.getActivity().getBaseContext(), NData, R.layout.student_list_item,  
+						new String[] { ITEM_TITLE, ITEM_CAPTION }, new int[] { R.id.textView1, R.id.textView2 }));   
+
+				lvListe.setAdapter(adapter);
+
+				lvListe.setOnItemClickListener(new OnItemClickListener() {
+					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+						Toast toast = Toast.makeText(view.getContext(), "position in list : " + position
+								+ " item : " + parent.getAdapter().getItem(position)
+								+ " nb item in list : " + parent.getAdapter().getCount()
+								, Toast.LENGTH_SHORT);
+						toast.show();
+						Log.e("onItemClick ", "onItemClick ");
+					}
+				});
+
 				return rootView;
 			}             
 			case 3:{

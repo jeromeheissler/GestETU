@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 <!--this is to give gradient effect -->
-<!-- <gradient   android:angle="270"
-            android:startColor="#e7ff47"
-            android:endColor="#90a501"
-            />-->
 <gradient   android:angle="270"
-            android:startColor="@color/LoginSignInColor"
-            android:endColor="@color/LoginSignInColor"
+            android:startColor="@color/LoginSignInColorBgStart"
+            android:endColor="@color/LoginSignInColorBgEnd"
+            
             />
 <!-- this is make corners of button rounded -->
 <corners    android:topLeftRadius="5dip"

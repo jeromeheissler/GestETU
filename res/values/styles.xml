@@ -19,9 +19,16 @@
     <color name="LoginColor">#373737</color>
     <color name="LoginBandColor">#1F1F1F</color>
     <color name="LoginWebSiteColor">#898989</color>
-    <color name="LoginSignInColor">#0078B6</color>
-    <color name="LoginSignUpColor">#717171</color>
+    <color name="LoginSignInColorBgStart">#229DD4</color>
+    <color name="LoginSignInColorBgEnd">#097BC4</color>
+    <color name="LoginSignInColorHoverStart">#0078B6</color>    
+    <color name="LoginSignInColorHoverEnd">#005AAA</color>   
+    <color name="LoginSignUpColorBgStart">#717171</color>
+    <color name="LoginSignUpColorBgEnd">#454B4F</color>
+    <color name="LoginSignUpColorHoverStart">#6b6b6b</color>    
+    <color name="LoginSignUpColorHoverEnd">#0e0e0e</color>
     <color name="TextColor">#FFFFFF</color>
+    <color name="TextColorStudentTextView2">#717171</color>
     <style parent="android:Theme.Holo.NoActionBar" name="AppLoginTheme"></style>
     <color name="LoginEditTextColor">#000000</color>
     <color name="PromotionItemDividerColor">#3E3E3E</color>

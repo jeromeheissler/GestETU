@@ -79,7 +79,8 @@
             android:hint="@string/login_password"
             android:inputType="textPassword"
             android:textColor="@color/LoginEditTextColor"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/buttonSignIn"
