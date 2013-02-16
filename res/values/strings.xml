@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">GestETU</string>
-    <string name="title_section3">Promotion</string>
-    <string name="title_section2">Students</string>
-    <string name="title_section1">Take a mark</string>
+    <string name="app_name">GestNote</string>
+    <string name="tab_section_promotion">Promotions</string>
+    <string name="tab_section_students">Students</string>
+    <string name="tab_section_mark">Take a mark</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     
@@ -16,5 +16,4 @@
     <string name="login_sign_in">Sign in</string>
     <string name="login_sign_up">Sign up</string>
     
-
 </resources>

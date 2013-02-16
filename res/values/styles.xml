@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -7,7 +7,7 @@
     <style name="AppBaseTheme" parent="android:Theme.Holo">
         <!--
             Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
+            res/values-vXX/styles.xmandroid:Theme.Holol, while customizations related to
             backward-compatibility can go here.
         -->
     </style>
@@ -18,9 +18,33 @@
     </style>
     <color name="LoginColor">#373737</color>
     <color name="LoginBandColor">#1F1F1F</color>
-    <color name="LoginTextColor">#FFFFFF</color>
+    <color name="LoginWebSiteColor">#898989</color>
     <color name="LoginSignInColor">#0078B6</color>
     <color name="LoginSignUpColor">#717171</color>
-    <color name="LoginWebSiteColor">#898989</color>
+    <color name="TextColor">#FFFFFF</color>
+    <style parent="android:Theme.Holo.NoActionBar" name="AppLoginTheme"></style>
+    <color name="LoginEditTextColor">#000000</color>
+    <color name="PromotionItemDividerColor">#3E3E3E</color>
+    <color name="MenuColor">#222222</color>
+    <color name="PromotionHeaderColor">#31b6e7</color>
+    <style parent="android:attr/listSeparatorTextViewStyle" name="SeparatorHeaderPromotionStyle">
+        <item name="android:drawableBottom">@drawable/section_header</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/PromotionHeaderColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+        <style parent="android:attr/listSeparatorTextViewStyle" name="SeparatorItemPromotionStyle">
+        <item name="android:drawableBottom">@drawable/section_item</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
 </resources>

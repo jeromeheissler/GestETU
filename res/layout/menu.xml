@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".MenuActivity"
     tools:ignore="MergeRootFrame" >
 
     <TabHost
@@ -29,19 +29,40 @@
                 android:layout_height="match_parent" >
 
                 <LinearLayout
-                    android:id="@+id/tab1"
+                    android:id="@+id/tabPromotions"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/MenuColor" >
+
+                   <!--   <ExpandableListView
+                        android:id="@+id/expandableListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp"
+                        android:background="@color/MenuColor"
+                        android:divider="@color/PromotionDividerColor"
+                        android:dividerHeight="2dp" >
+                    </ExpandableListView> -->
+
+                    <ListView
+                        android:id="@+id/listView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp"
+                        android:background="@color/MenuColor" >
+
+                    </ListView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabStudents"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
+                    android:id="@+id/tabMark"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                 </LinearLayout>
