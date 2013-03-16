@@ -3,7 +3,27 @@
     <item
         android:id="@+id/menu_settings"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="always|collapseActionView"
+        android:title="@string/menu_settings">
+        <menu>
+            <item android:id="@+id/sortByLastName"
+                  android:title="@string/sortByLastName" />
+            <item android:id="@+id/sortByFirstName"
+                  android:title="@string/sortByFirstName" />
+        </menu>
+     </item>
+    
+    <item android:id="@+id/action_search"
+          android:title="Search"
+          android:icon="@android:drawable/ic_menu_search"
+          android:showAsAction="ifRoom"
+          android:actionViewClass="android.widget.SearchView" />
+    
+    <item
+        android:id="@+id/menu_load"
+        android:icon="@drawable/navigation_refresh"
+        android:orderInCategory="200"
+        android:showAsAction="always"
         android:title="@string/menu_settings"/>
 
 </menu>

@@ -96,10 +96,7 @@ public class ListSeparer extends BaseAdapter {
 		return (getItemViewType(position) != TYPE_SECTION_HEADER);  
 	} 
 
-
-
 	public View getView(int position, View convertView, ViewGroup parent) {  
-
 
 		int sectionnum = 0;  
 		for(Object section : this.sections.keySet()) {  
