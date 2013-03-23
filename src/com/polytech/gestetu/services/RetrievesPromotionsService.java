@@ -22,7 +22,7 @@ public class RetrievesPromotionsService extends Thread {
 	//Step 1: create a variable to hold return value
 	private ArrayList<Promotion> retrievesPromotions;
 
-	//Step 2: add getFibonacci() method
+	//Step 2: add getRetrievesPromotions() method
 	public ArrayList<Promotion> getRetrievesPromotions(){
 		return retrievesPromotions;
 	}
@@ -83,7 +83,7 @@ public class RetrievesPromotionsService extends Thread {
 					/*****************   fin requete GET   ******************/
 
 					// parse de la réponse JSON 
-					String jsonFormattedString = reponseGet.replace("\\\"", "\"");
+					/*String jsonFormattedString = reponseGet.replace("\\\"", "\"");
 					
 					Log.d(TAG, "Réponse GET after backslash filter : " + jsonFormattedString);
 					
@@ -93,14 +93,17 @@ public class RetrievesPromotionsService extends Thread {
 					Log.d(TAG, "Réponse GET after accolade filter : " + jsonFormattedString);
 
 					// parse de la string contenant un document json vers une structure json 
-					JSONArray jsonArray = new JSONArray(jsonFormattedString);
+					JSONArray jsonArray = new JSONArray(jsonFormattedString);*/
+					
+					JSONObject json = new JSONObject(reponseGet);
+					JSONArray jsonArray = json.getJSONArray("promotions"); 
+					
+					Log.d(TAG, "jsonArray : " + jsonArray.toString());
 					
 					retrievesPromotions = new ArrayList<Promotion>();
 					
 					for (int i = 0; i < jsonArray.length(); i++)
 					{	
-						Log.d(TAG, "jsonArray : " + jsonArray.toString());
-
 						JSONObject jsonObject = jsonArray.getJSONObject(i);
 						
 						ObjectMapper mapper = new ObjectMapper();

@@ -10,6 +10,7 @@ public class Test {
 	private Subject subject;
 	private float note;
 	private Teacher teacher;
+	private String date;
 	
 	public String getId() {
 		return id;
@@ -41,5 +42,13 @@ public class Test {
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

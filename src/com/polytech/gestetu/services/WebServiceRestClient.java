@@ -118,7 +118,8 @@ public class WebServiceRestClient
 	public enum RequestMethod
 	{
 		GET, 
-		POST 
+		POST,
+		PUT
 	}
 
 	/** 
@@ -185,6 +186,26 @@ public class WebServiceRestClient
 
 			break;
 		}
+		case PUT:
+		{
+			//Log.d(TAG, "url : " + url);
+
+			HttpPut requestPut = new HttpPut(url);
+
+			//add headers
+			for(NameValuePair h : headers)
+			{
+				requestPut.addHeader(h.getName(), h.getValue());
+			}
+
+			if(!params.isEmpty()){
+				requestPut.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			}
+
+			executeRequest(requestPut, url);
+
+			break;
+		}
 		}
 	}
 
@@ -235,7 +256,7 @@ public class WebServiceRestClient
 
 					//Log.d(TAG, "response : " + response);
 
-					// la fermeture du flux d'entrÃ©e va dÃ©clencher la libÃ©ration de connexion
+					// la fermeture du flux d'entrée va déclencher la libération de connexion
 					instream.close();
 				}   
 

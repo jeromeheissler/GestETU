@@ -35,6 +35,7 @@ public class ListSeparer extends BaseAdapter {
 		headers = new ArrayAdapter<String>(context, R.layout.list_header); 
 
 	}
+	
 	//méthode pour ajouter dans le header le nom de ma catégorie et dans sections le nom et un objet adapter
 	public void addSection(String section, Adapter adapter) {  
 		this.headers.add(section);  

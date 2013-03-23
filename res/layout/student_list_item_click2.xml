@@ -25,7 +25,8 @@
                 android:layout_marginTop="15dp"
                 android:paddingLeft="5dp"
                 android:text="toto"
-                android:textColor="@color/TextColor" />
+                android:textColor="@color/TextColor"
+                android:gravity="right" />
             
     </LinearLayout>
 

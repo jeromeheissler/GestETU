@@ -30,16 +30,23 @@ public class GlobalVars extends Application {
 	private static boolean sortByLastName = true;
 	
 	private static boolean sortByFirstName = false;
+	
+	private static String tokenValue;
 
+	// permet de savoir quel type de personne est connectée (teacher or a student)
+	private static String type; 
+	
 	// timeout de connexion
 	// Définit le délai en millisecondes jusqu'à  ce qu'une connexion est établie.
 	// La valeur par défaut est zéro, cela signifie que le délai d'attente n'est pas utilisé.
-	private static final int timeOutConnection = 10000;
+	//private static final int timeOutConnection = 10000;
+	private static final int timeOutConnection = 0;
 	
 	// timeout de retour
 	// Définit le délai d'attente socket par défaut (SO_TIMEOUT)
 	// En millisecondes, ce qui est le délai d'attente pour les données.
-	private static final int timeOutSocket = 20000;
+	//private static final int timeOutSocket = 20000;
+	private static final int timeOutSocket = 0;
 	
 	// contexte de l'application
     private static Context context;
@@ -133,6 +140,38 @@ public class GlobalVars extends Application {
 	 */
 	public static void setSortByFirstName(boolean sortByFirstName) {
 		GlobalVars.sortByFirstName = sortByFirstName;
+	}
+	
+	/** 
+	 * Accesseur GET de l'attribut tokenValue
+	 * @return l'attribut tokenValue
+	 */
+	public static String getTokenValue() {
+		return tokenValue;
+	}
+
+	/** 
+	 * Accesseur SET de l'attribut tokenValue
+	 * @param l'attribut tokenValue
+	 */
+	public static void setTokenValue(String tokenValue) {
+		GlobalVars.tokenValue = tokenValue;
+	}
+	
+	/** 
+	 * Accesseur GET de l'attribut type
+	 * @return l'attribut type
+	 */
+	public static String getType() {
+		return type;
+	}
+
+	/** 
+	 * Accesseur SET de l'attribut type
+	 * @param l'attribut type
+	 */
+	public static void setType(String type) {
+		GlobalVars.type = type;
 	}
 	
 	/** 

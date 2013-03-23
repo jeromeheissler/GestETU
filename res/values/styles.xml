@@ -53,5 +53,11 @@
         <item name="android:textColor">@color/TextColor</item>
         <item name="android:textSize">16sp</item>
     </style>
-
+	    <style parent="android:attr/listSeparatorTextViewStyle" name="SeparatorEditStudentStyle">
+        <item name="android:drawableBottom">@drawable/section_header</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/PromotionHeaderColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+        
 </resources>

@@ -10,6 +10,7 @@ public class Teacher {
 	private String mail;
 	private String firstname;
 	private String lastname;
+	private boolean delete;
 	
 	public String getId() {
 		return id;
@@ -41,5 +42,13 @@ public class Teacher {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+
+	public boolean isDelete() {
+		return delete;
+	}
+
+	public void setDelete(boolean delete) {
+		this.delete = delete;
 	}
 }

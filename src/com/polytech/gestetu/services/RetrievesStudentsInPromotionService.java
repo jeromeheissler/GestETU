@@ -9,23 +9,23 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.polytech.gestetu.GlobalVars;
-import com.polytech.gestetu.models.Promotion;
 import com.polytech.gestetu.models.Student;
 import com.polytech.gestetu.services.WebServiceRestClient.RequestMethod;
 
-public class RetrievesStudentsService extends Thread {
+public class RetrievesStudentsInPromotionService extends Thread {
 	
 	//déclaration des variables globales
-	private static final String TAG = "RetrievesStudentsService";
+	private static final String TAG = "RetrievesStudentsInPromotionService";
 	// variable qui va permettre d'envoyer un message pour stopper la progress bar et afficher un message d'erreur
 	private static int mHandler = 0;
+	private String idPromotion;
 	
 	//Step 1: create a variable to hold return value
-	private ArrayList<Student> retrievesStudents;
+	private ArrayList<Student> retrievesStudentsInPromotion;
 
-	//Step 2: add getRetrievesStudents() method
-	public ArrayList<Student> getRetrievesStudents(){
-		return retrievesStudents;
+	//Step 2: add getRetrievesStudentsInPromotion() method
+	public ArrayList<Student> getRetrievesStudentsInPromotion(){
+		return retrievesStudentsInPromotion;
 	}
 
 	//Step 3: Calculate and assign the value to a variable
@@ -34,6 +34,11 @@ public class RetrievesStudentsService extends Thread {
 		Process();
 	}
 
+	public RetrievesStudentsInPromotionService(String idPromotion)
+	{
+		this.idPromotion = idPromotion;
+	}
+	
 	private void Process(){
 		//retrievesPromotions = new ArrayList<Promotion>();
 		//retrievesPromotions = null;
@@ -48,7 +53,7 @@ public class RetrievesStudentsService extends Thread {
 				/*****************   debut requete GET   ******************/
 				int responseCode = 0;	
 				String url = GlobalVars.getUrl();
-				String uriGet = "api/student";
+				String uriGet = "api/promotion/" + idPromotion;
 				String address = url + uriGet;
 				
 				WebServiceRestClient webServiceRestGet = new WebServiceRestClient(address);    
@@ -91,15 +96,16 @@ public class RetrievesStudentsService extends Thread {
 					jsonFormattedString = jsonFormattedString.replace("\"{", "{");
 					jsonFormattedString = jsonFormattedString.replace("}\"", "}");
 					
-					Log.d(TAG, "Réponse GET after accolade filter : " + jsonFormattedString);
+					Log.d(TAG, "Réponse GET after accolade filter : " + jsonFormattedString);*/
 
 					// parse de la string contenant un document json vers une structure json 
-					JSONArray jsonArray = new JSONArray(jsonFormattedString);*/
+					//JSONArray jsonArray = new JSONArray(jsonFormattedString);
 					
 					JSONObject json = new JSONObject(reponseGet);
-					JSONArray jsonArray = json.getJSONArray("content");
+					JSONObject jsonObjectPromotion = json.getJSONObject("promotion"); 
+					JSONArray jsonArray = jsonObjectPromotion.getJSONArray("students"); 
 					
-					retrievesStudents = new ArrayList<Student>();
+					retrievesStudentsInPromotion = new ArrayList<Student>();
 					
 					Log.d(TAG, "jsonArray : " + jsonArray.toString());
 					
@@ -110,25 +116,25 @@ public class RetrievesStudentsService extends Thread {
 						ObjectMapper mapper = new ObjectMapper();
 						Log.d(TAG, "jsonObject : " + jsonObject.toString() );
 						Student student = mapper.readValue(jsonObject.toString(), Student.class);
-						Log.d(TAG, "my retrieves student : " + student.getId() + " " + student.getFirstname() + " " + student.getLastname() + " " + student.getNumStu());
+						Log.d(TAG, "my retrieves students in my promotion : " + student.getId() + " " + student.getFirstname() + " " + student.getLastname());
 						
-						retrievesStudents.add(student);
-						Log.d(TAG, "my retrieves student add to students OK ! count : " + retrievesStudents.size());
+						retrievesStudentsInPromotion.add(student);
+						Log.d(TAG, "my retrieves students in my promotion add to studentsInPromotion OK ! count : " + retrievesStudentsInPromotion.size());
 					}
-					mHandler = 21;
+					mHandler = 22;
 				}
 			}
 			else
 			{
-				mHandler = 41;
-				retrievesStudents = new ArrayList<Student>();
-				Log.e(TAG, "Récupération des étudiants impossible suite à un problème réseau");
+				mHandler = 42;
+				retrievesStudentsInPromotion = new ArrayList<Student>();
+				Log.e(TAG, "Récupération des étudiants de la promotion impossible suite à un problème réseau");
 			}
 		}
 		catch (Exception e)
 		{
-			mHandler = 51;
-			Log.e(TAG, "Problème survenue lors de la récupération des étudiants \n" + e.getMessage());
+			mHandler = 52;
+			Log.e(TAG, "Problème survenue lors de la récupération des étudiants de la promotion \n" + e.getMessage());
 		}
 	}
 	

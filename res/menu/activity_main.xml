@@ -20,10 +20,33 @@
           android:actionViewClass="android.widget.SearchView" />
     
     <item
-        android:id="@+id/menu_load"
+        android:id="@+id/menu_refresh"
         android:icon="@drawable/navigation_refresh"
         android:orderInCategory="200"
         android:showAsAction="always"
         android:title="@string/menu_settings"/>
+    
+	<item android:id="@+id/manage_student" 
+      android:title="Manage your student"
+      android:icon="@drawable/content_edit"
+      android:showAsAction="ifRoom|withText" >
+	     <menu android:id="@+id/sousmenu">
+			 <item android:id="@+id/add_student"
+			       android:title="Add a new student"
+			       android:icon="@drawable/content_new"   />	
+		 
+			 <!-- <item android:id="@+id/edit_student"
+			       android:title="Edit your student"
+			       android:icon="@drawable/content_edit"  /> -->
+			 
+		 	<item android:id="@+id/delete_student"
+		       android:title="Delete your student"
+		       android:icon="@drawable/content_discard"  />
+	     </menu>  
+	</item>
+	 
+	<item android:id="@+id/close_app" 
+	     android:title="Close your app"
+	     android:showAsAction="ifRoom|withText" />
 
 </menu>

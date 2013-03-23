@@ -2,14 +2,112 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical" >
-    
+
      <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical"
       android:paddingLeft="15dp"
-      android:paddingRight="15dp" >
+      android:paddingRight="15dp"
+      android:paddingTop="15dp" >
+      
+      <TextView  
+      xmlns:android="http://schemas.android.com/apk/res/android"  
+      android:layout_width="fill_parent"  
+      android:layout_height="wrap_content"
+      android:text="Information of student"
+      android:textColor="@color/PromotionHeaderColor" 
+      android:textSize="14sp" 
+      android:paddingLeft="8dp"
+      android:paddingTop="8dp"
+      android:textAllCaps="true"
+      android:layout_marginLeft="15dp"/>
+
+      <TextView
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          style="@style/SeparatorEditStudentStyle"
+          android:layout_width="195dp"
+          android:layout_height="5dp"
+          android:layout_marginLeft="15dp"
+          android:layout_marginBottom="10dp"/>
+    
+      <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical" >
+	      
+		      <TextView  
+		      xmlns:android="http://schemas.android.com/apk/res/android"  
+		      android:layout_width="fill_parent"  
+		      android:layout_height="wrap_content"
+		      android:text="Lastname"
+		      android:textColor="@color/PromotionHeaderColor" 
+		      android:textSize="14sp" 
+		      android:layout_marginTop="8dp"
+		      android:paddingLeft="8dp"
+		      android:paddingTop="8dp"/>
+
+		      <TextView
+		          xmlns:android="http://schemas.android.com/apk/res/android"
+		          style="@style/SeparatorEditStudentStyle"
+		          android:layout_width="fill_parent"
+		          android:layout_height="5dp" />
+	
+		      <EditText
+		          android:id="@+id/TextViewLastName"
+		          android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_marginTop="15dp"
+		          android:ems="10"
+		          android:paddingLeft="5dp"
+		          android:singleLine="true"
+		          android:hint="Enter the name"
+		          android:textColor="@color/TextColor"
+		          android:textSize="16sp" >
+	
+		      </EditText>
+    
+      </LinearLayout>
+    
+      <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical" >
+	      
+		      <TextView  
+		      xmlns:android="http://schemas.android.com/apk/res/android"  
+		      android:layout_width="fill_parent"  
+		      android:layout_height="wrap_content"
+		      android:text="Firstname"
+		      android:textColor="@color/PromotionHeaderColor" 
+		      android:textSize="14sp" 
+		      android:layout_marginTop="8dp"
+		      android:paddingLeft="8dp"
+		      android:paddingTop="8dp"/>
+
+		      <TextView
+		          xmlns:android="http://schemas.android.com/apk/res/android"
+		          style="@style/SeparatorEditStudentStyle"
+		          android:layout_width="fill_parent"
+		          android:layout_height="5dp" />
+	
+		      <EditText
+		          android:id="@+id/TextViewFirstName"
+		          android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_marginTop="15dp"
+		          android:ems="10"
+		          android:paddingLeft="5dp"
+		          android:singleLine="true"
+		          android:hint="Enter the firstname"
+		          android:textColor="@color/TextColor"
+		          android:textSize="16sp" >
+	
+		      </EditText>
+    
+      </LinearLayout>
     
       <LinearLayout
       android:layout_width="match_parent"
@@ -25,8 +123,7 @@
 		      android:textSize="14sp" 
 		      android:layout_marginTop="8dp"
 		      android:paddingLeft="8dp"
-		      android:paddingTop="8dp"
-		      android:textAllCaps="true"/>
+		      android:paddingTop="8dp"/>
 
 		      <TextView
 		          xmlns:android="http://schemas.android.com/apk/res/android"
@@ -34,8 +131,8 @@
 		          android:layout_width="fill_parent"
 		          android:layout_height="5dp" />
 	
-		      <AutoCompleteTextView
-		          android:id="@+id/AutoCompleteTextViewStudentNumberTakeMark"
+		      <EditText
+		          android:id="@+id/TextViewNumSTU"
 		          android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
 		          android:layout_marginTop="15dp"
@@ -46,10 +143,48 @@
 		          android:textColor="@color/TextColor"
 		          android:textSize="16sp" >
 	
-		      </AutoCompleteTextView>
+		      </EditText>
     
       </LinearLayout>
     
+            <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical" >
+	      
+		      <TextView  
+		      xmlns:android="http://schemas.android.com/apk/res/android"  
+		      android:layout_width="fill_parent"  
+		      android:layout_height="wrap_content"
+		      android:text="Email"
+		      android:textColor="@color/PromotionHeaderColor" 
+		      android:textSize="14sp" 
+		      android:layout_marginTop="8dp"
+		      android:paddingLeft="8dp"
+		      android:paddingTop="8dp"/>
+
+		      <TextView
+		          xmlns:android="http://schemas.android.com/apk/res/android"
+		          style="@style/SeparatorEditStudentStyle"
+		          android:layout_width="fill_parent"
+		          android:layout_height="5dp" />
+	
+		      <EditText
+		          android:id="@+id/TextViewEmail"
+		          android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_marginTop="15dp"
+		          android:ems="10"
+		          android:paddingLeft="5dp"
+		          android:singleLine="true"
+		          android:hint="Enter the email"
+		          android:textColor="@color/TextColor"
+		          android:textSize="16sp" >
+	
+		      </EditText>
+    
+      </LinearLayout>
+      
       <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -59,13 +194,12 @@
 		      xmlns:android="http://schemas.android.com/apk/res/android"  
 		      android:layout_width="fill_parent"  
 		      android:layout_height="wrap_content"
-		      android:text="Mark"
+		      android:text="Promotion"
 		      android:textColor="@color/PromotionHeaderColor" 
 		      android:textSize="14sp" 
 		      android:layout_marginTop="8dp"
 		      android:paddingLeft="8dp"
-		      android:paddingTop="8dp"
-		      android:textAllCaps="true"/>
+		      android:paddingTop="8dp"/>
 
 		      <TextView
 		          xmlns:android="http://schemas.android.com/apk/res/android"
@@ -73,62 +207,23 @@
 		          android:layout_width="fill_parent"
 		          android:layout_height="5dp" />
 	
-		      <AutoCompleteTextView
-		          android:id="@+id/AutoCompleteTextViewMarkTakeMark"
+		      <Spinner
+		          android:id="@+id/SpinnerPromotion"
 		          android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
 		          android:layout_marginTop="15dp"
 		          android:ems="10"
 		          android:paddingLeft="5dp"
 		          android:singleLine="true"
-		          android:hint="Enter the mark"
+		          android:hint="Enter the promotion"
 		          android:textColor="@color/TextColor"
 		          android:textSize="16sp" >
 	
-		      </AutoCompleteTextView>
+		      </Spinner>
+		      
+		      
     
       </LinearLayout>
-    
-      <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical" >
-	      
-		      <TextView  
-		      xmlns:android="http://schemas.android.com/apk/res/android"  
-		      android:layout_width="fill_parent"  
-		      android:layout_height="wrap_content"
-		      android:text="Matter"
-		      android:textColor="@color/PromotionHeaderColor" 
-		      android:textSize="14sp" 
-		      android:layout_marginTop="8dp"
-		      android:paddingLeft="8dp"
-		      android:paddingTop="8dp"
-		      android:textAllCaps="true"/>
-
-		      <TextView
-		          xmlns:android="http://schemas.android.com/apk/res/android"
-		          style="@style/SeparatorEditStudentStyle"
-		          android:layout_width="fill_parent"
-		          android:layout_height="5dp" />
-	
-		      <AutoCompleteTextView
-		          android:id="@+id/AutoCompleteTextViewMatterTakeMark"
-		          android:layout_width="match_parent"
-		          android:layout_height="wrap_content"
-		          android:layout_marginTop="15dp"
-		          android:ems="10"
-		          android:paddingLeft="5dp"
-		          android:singleLine="true"
-		          android:hint="Enter the matter"
-		          android:textColor="@color/TextColor"
-		          android:textSize="16sp" >
-	
-		      </AutoCompleteTextView>
-    
-      </LinearLayout>
-    
-
       
       <LinearLayout
           android:layout_width="match_parent"
@@ -145,7 +240,7 @@
 	          android:background="@drawable/content_new" />
       
       </LinearLayout>
+      
+  </LinearLayout>
 
-     </LinearLayout>
-    
 </LinearLayout>

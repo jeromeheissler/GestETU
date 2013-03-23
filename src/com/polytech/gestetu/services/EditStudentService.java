@@ -13,19 +13,26 @@ import com.polytech.gestetu.models.Promotion;
 import com.polytech.gestetu.models.Student;
 import com.polytech.gestetu.services.WebServiceRestClient.RequestMethod;
 
-public class RetrievesStudentsService extends Thread {
+public class EditStudentService extends Thread {
 	
 	//déclaration des variables globales
-	private static final String TAG = "RetrievesStudentsService";
+	private static final String TAG = "EditStudentService";
 	// variable qui va permettre d'envoyer un message pour stopper la progress bar et afficher un message d'erreur
 	private static int mHandler = 0;
 	
+	private Student student;
+	
+	public EditStudentService(Student student)
+	{
+		this.student = student;
+	}
+	
 	//Step 1: create a variable to hold return value
-	private ArrayList<Student> retrievesStudents;
+	private String statusOK;
 
-	//Step 2: add getRetrievesStudents() method
-	public ArrayList<Student> getRetrievesStudents(){
-		return retrievesStudents;
+	//Step 2: add getRetrievesPromotions() method
+	public String getStatusOk(){
+		return statusOK;
 	}
 
 	//Step 3: Calculate and assign the value to a variable
@@ -45,23 +52,27 @@ public class RetrievesStudentsService extends Thread {
 			Log.d(TAG, "disponibilité réseau : " + disponibiliteReseauOk);
 			if (disponibiliteReseauOk == true)
 			{
-				/*****************   debut requete GET   ******************/
+				/*****************   debut requete POST   ******************/
 				int responseCode = 0;	
 				String url = GlobalVars.getUrl();
-				String uriGet = "api/student";
-				String address = url + uriGet;
+				String uriPost = "api/student/" + student.getId();
+				String address = url + uriPost;
 				
-				WebServiceRestClient webServiceRestGet = new WebServiceRestClient(address);    
+				WebServiceRestClient webServiceRestPost = new WebServiceRestClient(address);    
 				
-				// header 
-				webServiceRestGet.AddHeader("Accept", "application/json");
-				webServiceRestGet.AddHeader("Content-type", "application/json");
+				ObjectMapper mapper = new ObjectMapper();
+				String jsonObjectStudent = mapper.writeValueAsString(student);  
+				Log.d(TAG, "jsonObjectStudent : " + jsonObjectStudent);
+				
+				// param
+				webServiceRestPost.AddParam("t", GlobalVars.getTokenValue());
+				webServiceRestPost.AddParam("student", jsonObjectStudent);
 				
 				try {
-					webServiceRestGet.Execute(RequestMethod.GET);
+					webServiceRestPost.Execute(RequestMethod.POST);
 					// récupération du code http renvoyé après exécution de la requête http 
 					// qui permet d'identifier les éventuelles erreurs survenues lors de l'exécution
-					responseCode = webServiceRestGet.getResponseCode();
+					responseCode = webServiceRestPost.getResponseCode();
 
 				} catch (Exception e) {
 					Log.e(TAG, "Erreur webServiceRestGet \n" + e.getMessage());
@@ -77,11 +88,11 @@ public class RetrievesStudentsService extends Thread {
 				else if (responseCode == 200)
 				{
 					Log.i(TAG, "La requête HTTP a été traitée avec succès. (code HTTP " + responseCode + " : OK)");
-					String reponseGet = webServiceRestGet.getResponse();
-					Log.d(TAG, "Réponse GET : " + reponseGet);
+					String reponsePost = webServiceRestPost.getResponse();
+					Log.d(TAG, "Réponse POST : " + reponsePost);
 					
 					
-					/*****************   fin requete GET   ******************/
+					/*****************   fin requete POST   ******************/
 
 					// parse de la réponse JSON 
 					/*String jsonFormattedString = reponseGet.replace("\\\"", "\"");
@@ -96,39 +107,31 @@ public class RetrievesStudentsService extends Thread {
 					// parse de la string contenant un document json vers une structure json 
 					JSONArray jsonArray = new JSONArray(jsonFormattedString);*/
 					
-					JSONObject json = new JSONObject(reponseGet);
-					JSONArray jsonArray = json.getJSONArray("content");
+					JSONObject jsonObject = new JSONObject(reponsePost);
 					
-					retrievesStudents = new ArrayList<Student>();
+					Log.d(TAG, "jsonObject : " + jsonObject.toString());
 					
-					Log.d(TAG, "jsonArray : " + jsonArray.toString());
-					
-					for (int i = 0; i < jsonArray.length(); i++)
-					{	
-						JSONObject jsonObject = jsonArray.getJSONObject(i);
-						
-						ObjectMapper mapper = new ObjectMapper();
-						Log.d(TAG, "jsonObject : " + jsonObject.toString() );
-						Student student = mapper.readValue(jsonObject.toString(), Student.class);
-						Log.d(TAG, "my retrieves student : " + student.getId() + " " + student.getFirstname() + " " + student.getLastname() + " " + student.getNumStu());
-						
-						retrievesStudents.add(student);
-						Log.d(TAG, "my retrieves student add to students OK ! count : " + retrievesStudents.size());
+					String status = jsonObject.getString("status");
+					if (status.equals("200"))
+					{
+						mHandler = 22;				
 					}
-					mHandler = 21;
+					else
+					{
+						mHandler = 32;
+					}
 				}
 			}
 			else
 			{
-				mHandler = 41;
-				retrievesStudents = new ArrayList<Student>();
-				Log.e(TAG, "Récupération des étudiants impossible suite à un problème réseau");
+				mHandler = 42;
+				Log.e(TAG, "Récupération des promotions impossible suite à un problème réseau");
 			}
 		}
 		catch (Exception e)
 		{
-			mHandler = 51;
-			Log.e(TAG, "Problème survenue lors de la récupération des étudiants \n" + e.getMessage());
+			mHandler = 52;
+			Log.e(TAG, "Problème survenue lors de la récupération des promotions \n" + e.getMessage());
 		}
 	}
 	
